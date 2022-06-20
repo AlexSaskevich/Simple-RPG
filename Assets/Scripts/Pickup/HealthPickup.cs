@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class HealthPickup : MonoBehaviour
 {
-    [SerializeField] private PlayerStats _playerStats;
     [SerializeField] private Potion _potion;
 
     private void OnTriggerEnter(Collider other)

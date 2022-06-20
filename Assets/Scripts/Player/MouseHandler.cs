@@ -33,7 +33,6 @@ public class MouseHandler : MonoBehaviour
             if (hit.collider.TryGetComponent(out ItemPicker itemPicker) || hit.collider.TryGetComponent(out Chest chest))
             {
                 ItemHit?.Invoke(this, hit);
-
             }
 
             if (hit.collider.TryGetComponent(out Enemy enemy))

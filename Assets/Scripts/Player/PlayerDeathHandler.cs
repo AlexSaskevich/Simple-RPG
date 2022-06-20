@@ -1,4 +1,3 @@
-using System.Collections;
 using UnityEngine;
 
 [RequireComponent(typeof(CharacterStats))]
@@ -9,8 +8,6 @@ using UnityEngine;
 
 public class PlayerDeathHandler : MonoBehaviour
 {
-    [SerializeField] private GameOverScreen _gameOverScreen;
-
     private CharacterStats _playerStats;
     private PlayerMover _playerMover;
     private PlayerAttack _playerAttack;
@@ -38,19 +35,12 @@ public class PlayerDeathHandler : MonoBehaviour
 
     private void OnDying()
     {
-        StartCoroutine(DeathCoroutine());
-    }
-
-    private IEnumerator DeathCoroutine()
-    {
         _playerMover.enabled = false;
         _playerAttack.enabled = false;
         _playerAnimator.enabled = false;
         _equipmentMeshSetter.enabled = false;
 
         float timeToDestroying = 2.0f;
-        yield return new WaitForSeconds(timeToDestroying);
-
-        Destroy(gameObject);
+        Destroy(gameObject, timeToDestroying);
     }
 }
