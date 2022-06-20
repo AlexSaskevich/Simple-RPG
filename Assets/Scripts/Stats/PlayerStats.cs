@@ -17,16 +17,15 @@ public class PlayerStats : CharacterStats
 
     private void OnEquipmentChanged(Equipment newItem, Equipment oldItem)
     {
-        if (newItem != null)
+        if (newItem == null || oldItem == null)
         {
-            Armor.AddModifier(newItem.ArmorModifier);
-            Damage.AddModifier(newItem.DamageModifier);
+            return;
         }
 
-        if (oldItem != null)
-        {
-            Armor.RemoveModifier(oldItem.ArmorModifier);
-            Damage.RemoveModifier(oldItem.DamageModifier);
-        }
+        Armor.AddModifier(newItem.ArmorModifier);
+        Damage.AddModifier(newItem.DamageModifier);
+
+        Armor.RemoveModifier(oldItem.ArmorModifier);
+        Damage.RemoveModifier(oldItem.DamageModifier);
     }
 }
